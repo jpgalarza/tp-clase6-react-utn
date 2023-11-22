@@ -2,6 +2,8 @@
 export const inputValidation = (value, type, name) => {
   if(type === 'text') {
     const regexLetters = /^(?=.{3,15}$)[A-Za-zÁÉÍÓÚ][A-Za-zñáéíóú]+(?: [A-Za-zÁÉÍÓÚ][A-Za-zñáéíóú]+)?$/;
+
+    if(value.trim() === '') return 'No ingresaste dato';
   
     if(!regexLetters.test(value)) {
       return `${name[0].toUpperCase() + name.slice(1)} inválido`;
@@ -12,6 +14,8 @@ export const inputValidation = (value, type, name) => {
 
   if(type === 'email') {
     const regexMail =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if(value.trim() === '') return 'No ingresaste email';
 
     if(!regexMail.test(value)) {
       return 'Email inválido';
@@ -34,6 +38,8 @@ export const inputValidation = (value, type, name) => {
   }
 
   if(type === 'password') {
+    if(value.trim() === '') return 'No ingresaste contraseña';
+
     if(value.length < 6) {
       return 'Mínimo 6 caracteres';
     }else {
