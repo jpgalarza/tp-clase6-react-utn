@@ -1,0 +1,152 @@
+:root {
+  --primary-color: #7694ff;
+  --secondary-color: rgb(48, 48, 48);
+  --body-color: #000000;
+  --header-color: rgb(16, 64, 101, 0.3);
+  --form-container-color: rgb(102, 102, 102, 0.5); 
+  --form-font-color: rgb(223, 223, 223);
+  --btn-hover-color: #5066b7;
+  --light-font-color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background-color: var(--body-color);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--header-color);
+  color: var(--light-font-color);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0px;
+}
+
+.header-container span {
+  font-size: 1.5rem;
+}
+
+.header-container nav li {
+  display: inline;
+}
+
+.header-container nav li a {
+  text-decoration: none;
+  margin-left: 30px;
+  color: var(--light-font-color);
+}
+
+main {
+  flex-grow: 1;
+}
+
+.registration-main {
+  background-image: url('./assets/images/hombre-tegnologico.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: right;
+}
+
+.regist-section {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-container {
+  flex-basis: 500px;
+  background-color: var(--form-container-color);
+  border-radius: 20px;
+  padding: 20px 35px;
+  margin: 30px 10px;
+  color: var(--form-font-color);
+}
+
+.form-container h1 {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+}
+
+.form-label {
+  position: relative;
+}
+
+.input-component {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+  border: 2px solid var(--secondary-color);
+  font-size: 1rem;
+}
+
+.input-error {
+  border-color: #ff0000;
+}
+
+.error-message {
+  background-color: #ff0000; 
+  color: var(--light-font-color); 
+  position: absolute; 
+  bottom: -20px;
+  right: 10px;
+  font-size: small; 
+  border-radius: 5px; 
+  padding: 0 5px;
+}
+
+.btn-component {
+  width: 100%;
+  background-color: var(--primary-color);
+  margin: 15px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-component:hover {
+  background-color: var(--btn-hover-color);
+  color: var(--light-font-color);
+}
+
+footer {
+  background-color: var(--secondary-color);
+  color: var(--light-font-color);
+}
+
+.footer-container {
+  padding: 25px 0px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1400px;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+@media screen and (min-width: 993px) {
+  .form-container {
+    padding: 20px 70px;
+  }
+}
