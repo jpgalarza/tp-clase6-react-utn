@@ -1,10 +1,10 @@
 
-export const inputValidation = (value, type, id) => {
+export const inputValidation = (value, type, name) => {
   if(type === 'text') {
     const regexLetters = /^(?=.{3,15}$)[A-Za-zÁÉÍÓÚ][A-Za-zñáéíóú]+(?: [A-Za-zÁÉÍÓÚ][A-Za-zñáéíóú]+)?$/;
   
     if(!regexLetters.test(value)) {
-      return `${id[0].toUpperCase() + id.slice(1)} inválido`;
+      return `${name[0].toUpperCase() + name.slice(1)} inválido`;
     }else {
       return ''
     }
@@ -24,7 +24,7 @@ export const inputValidation = (value, type, id) => {
     //const num = value.replace(/ |-/g, "");
     const regexNum = /\D/g;
 
-    if(value.trim() === '') return 'Teléfono inválido';
+    if(value.trim() === '') return 'No ingresaste teléfono';
 
     if(regexNum.test(value)) {
       return 'Teléfono inválido';

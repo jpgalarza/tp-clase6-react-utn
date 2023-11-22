@@ -19,6 +19,7 @@ export const Registration = () => {
     password: false,
     confirm: false,
   });
+  const [errorMsgSubmit, setErrorMsgSubmit] = useState('');
 
   const handleInputChange = (data) => {
     setuser({...user, ...data});
@@ -31,7 +32,9 @@ export const Registration = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    if(Object.values(errors).includes(true)) return alert('Corrige los campos marcados en rojo');
+    setTimeout(() => setErrorMsgSubmit(''), 4000);
+
+    if(Object.values(errors).includes(true)) return setErrorMsgSubmit('Corrige los campos marcados en rojo');
 
     const { nombre, apellido, email, telefono, password, confirm } = user;
 
@@ -43,10 +46,13 @@ export const Registration = () => {
     const confTrim = confirm.trim();
 
     if(nomTrim === ''||  apeTrim === ''|| emailTrim === ''|| telTrim === ''|| passTrim === ''|| confTrim === '') {
-      return alert('Debes completar todos los campos');
+      return setErrorMsgSubmit('Debes completar todos los campos');
     }
 
-    if(passTrim !== confTrim) return alert('Las contraseñas son diferentes');
+    if(passTrim !== confTrim) {
+      setErrors({...errors, password: true, confirm: true});
+      return setErrorMsgSubmit('Las contraseñas son diferentes');
+    }
 
     const data = { 
       nombre: nomTrim.toLowerCase(),
@@ -76,7 +82,7 @@ export const Registration = () => {
       <section className="container regist-section">
         <div className="form-container">
           <form onSubmit={submit}>
-            <h1>Registro</h1>
+            <h1 className="form-title" data-error={errorMsgSubmit}>Registro</h1>
             <Input
               type="text"
               name="nombre"
@@ -85,6 +91,7 @@ export const Registration = () => {
               value={user.nombre}
               handleInputChange={handleInputChange}
               handleError={handleError}
+              error={errors.nombre}
             />
             <Input
               type="text"
@@ -94,6 +101,7 @@ export const Registration = () => {
               value={user.apellido}
               handleInputChange={handleInputChange}
               handleError={handleError}
+              error={errors.apellido}
             />
             <Input
               type="email"
@@ -103,6 +111,7 @@ export const Registration = () => {
               value={user.email}
               handleInputChange={handleInputChange}
               handleError={handleError}
+              error={errors.email}
             />
             <Input
               type="tel"
@@ -112,6 +121,7 @@ export const Registration = () => {
               value={user.telefono}
               handleInputChange={handleInputChange}
               handleError={handleError}
+              error={errors.telefono}
             />
             <Input
               type="password"
@@ -121,6 +131,7 @@ export const Registration = () => {
               value={user.password}
               handleInputChange={handleInputChange}
               handleError={handleError}
+              error={errors.password}
             />
             <Input
               type="password"
@@ -130,6 +141,7 @@ export const Registration = () => {
               value={user.confirm}
               handleInputChange={handleInputChange}
               handleError={handleError}
+              error={errors.confirm}
             />
             <Button type="submit" text="Registrame" />
           </form>

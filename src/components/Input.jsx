@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { inputValidation } from "../helpers/inputValidation";
 
-export const Input = ({ type, name, label, placeholder, value, handleInputChange, handleError }) => {
+export const Input = ({ type, name, label, placeholder, value, handleInputChange, handleError, error }) => {
   const [errorMsg, setErrorMsg] = useState('');
 
   const change = (e) => {
@@ -35,7 +35,7 @@ export const Input = ({ type, name, label, placeholder, value, handleInputChange
         name={name}
         value={value}
         placeholder={placeholder} 
-        className={`input-component ${errorMsg? 'input-error' : ''}`}
+        className={`input-component ${error? 'input-error' : ''}`}
         onChange={change}
         onBlur={blur}
       />
