@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Input } from "../Input";
 import { Button } from "../Button";
+import swal from 'sweetalert';
 
 export const Registration = () => {
   const [user, setuser] = useState({ 
@@ -74,7 +75,12 @@ export const Registration = () => {
       confirm: '',
     });
 
-    alert('Registro exitoso!!')
+    swal({
+      title: "Registro exitoso!!",
+      text: "Ya puedes usar nuestras aplicaciones",
+      icon: "success",
+      button: "Aceptar",
+    })
   };
 
   return (
